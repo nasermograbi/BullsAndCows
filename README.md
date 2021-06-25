@@ -1,4 +1,4 @@
-#Bulls And Cows
+<h1>Bulls And Cows</h1>
 
 This repository holds implementation of the Bulls And Cows game with two mods.
 
