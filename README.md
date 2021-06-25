@@ -14,6 +14,7 @@ For every guess that the player makes, he gets 2 values - the number of bulls an
 <h3>Logic behind the game</h3>
 -If you want the computer to guess your number: We assign the numbers from the input for bulls and cows, and check if they are entered. At each end of the cycle, check how many bulls there are. The bulls are counted by checking each number in the list and we see if the number of bulls changes. If the number on the list has not been reduced, reduce the probability.Similar way we check the cows. When every time a sequential number is being guessed in the range from 1234 to 9876 minus all the probabilities that we have rejected. And so on until the bulls become 4.
 
+
 -If you want to guess the computers number: A random number is being generated. After you input a number it checks its numbers one by one if the element is in the same position with the one generated one for the bulls.If its in the list but not in the same spot its a cow.
 
 
