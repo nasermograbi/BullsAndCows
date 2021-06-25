@@ -141,11 +141,15 @@ if __name__ == "__main__":
     if int(press) == int(1):
         new_gen_num = generate_number()
         while end:
-            new_guess = input()
-            res = [int(x) for x in str(new_guess)]
-            if check_number(new_gen_num, res) == False:
-                print("You win! The number is: " + new_guess)
-                end = False
+            for i in range(0,9):
+                print("What is your guess?")
+                new_guess = input()
+                res = [int(x) for x in str(new_guess)]
+                if check_number(new_gen_num, res) == False:
+                    print("You win! The number is: " + new_guess)
+                    end = False
+            print("You got no more guesses left! You lose.")
+            end = False
 
     if int(press) == int(2):
         for i in range(1234, 9876):
@@ -157,61 +161,65 @@ if __name__ == "__main__":
         print("Remaining possibilities: " + str(remaining_count) + "\n")
         print("My guess is:" + str(guessNumber) + "\n")
         while end:
-            print("bulls:")
-            bulls = input()
-            print("cows:")
-            cows = input()
+            for i in range(0, 10):
+                print("bulls:")
+                bulls = input()
+                print("cows:")
+                cows = input()
 
-            if bulls != "" and cows != "":
-                bulls_int = int(bulls)
+                if bulls != "" and cows != "":
+                    bulls_int = int(bulls)
 
-                if bulls_int != 4:
-                    bulls_temp = []
+                    if bulls_int != 4:
+                        bulls_temp = []
 
-                    for i in all_numbers:
-                        if check_bulls(i) == bulls_int:
-                            bulls_temp.append(i)
+                        for i in all_numbers:
+                            if check_bulls(i) == bulls_int:
+                                bulls_temp.append(i)
 
-                    all_numbers.clear()
-                    all_numbers.extend(bulls_temp)
-
-                    # cows
-                    cows_int = int(cows)
-                    cows_int = cows_int + bulls_int
-                    cows_temp = []
-
-                    for i in all_numbers:
-                        if check_cows(i) == cows_int:
-                            cows_temp.append(i)
-                    # remove all wrong possibilities and keep only the right ones base on cows
-                    if len(cows_temp) > 0:
                         all_numbers.clear()
-                        all_numbers.extend(cows_temp)
+                        all_numbers.extend(bulls_temp)
 
-                    # remaining possibilities
-                    remaining_count = len(all_numbers)
-                    # 8519
-                    # check how many possibilities are left
-                    if remaining_count > old_count or remaining_count == 0:
-                        print("You're lying\n")
-                    elif remaining_count == 1:
-                        guessNumber = all_numbers[0]
-                        print("Your number is: " + str(guessNumber) + "\n")
+                        # cows
+                        cows_int = int(cows)
+                        cows_int = cows_int + bulls_int
+                        cows_temp = []
+
+                        for i in all_numbers:
+                            if check_cows(i) == cows_int:
+                                cows_temp.append(i)
+                        # remove all wrong possibilities and keep only the right ones base on cows
+                        if len(cows_temp) > 0:
+                            all_numbers.clear()
+                            all_numbers.extend(cows_temp)
+
+                        # remaining possibilities
+                        remaining_count = len(all_numbers)
+                        # 8519
+                        # check how many possibilities are left
+                        if remaining_count > old_count or remaining_count == 0:
+                            print("You're lying\n")
+                        elif remaining_count == 1:
+                            guessNumber = all_numbers[0]
+                            print("Your number is: " + str(guessNumber) + "\n")
+                        else:
+                            old_count = remaining_count
+                            print("Remaining possibilities: " + str(remaining_count) + "\n")
+
+                            # guess the next available number
+                            guessNumber = all_numbers[0]
+                            print("My guess is:" + str(guessNumber) + "\n")
+
+                        all_numbers.clear()
+                        all_numbers.extend(bulls_temp)
+
                     else:
-                        old_count = remaining_count
-                        print("Remaining possibilities: " + str(remaining_count) + "\n")
-
-                        # guess the next available number
-                        guessNumber = all_numbers[0]
-                        print("My guess is:" + str(guessNumber) + "\n")
-
-                    all_numbers.clear()
-                    all_numbers.extend(bulls_temp)
-
+                        print("Your number is:" + str(guessNumber))
+                        end = False
                 else:
-                    print("Your number is:" + str(guessNumber))
-                    end = False
-            else:
-                print("Wrong input\n")
+                    print("Wrong input\n")
+            print("You win i could not guess your number!")
+            end = False
 
-    else: print("Wrong Input")
+    elif int(press) != int(1) and int(press) != int(2):
+        print("Wrong Input! Start the game again!")
