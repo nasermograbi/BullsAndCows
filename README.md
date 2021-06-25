@@ -18,5 +18,5 @@ For every guess that the player makes, he gets 2 values - the number of bulls an
 
 
 <h3>How to get to play it?</h3>
-The easyest way is to copy the code and run it on your local or online python ide like https://www.programiz.com/python-programming/online-compiler/
+The easiest way is to copy the code and run it on your local or online python ide like https://www.programiz.com/python-programming/online-compiler/
 
